@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h2 th:text="${problem.title}">
+</h2>
+
+<p>
+Difficulty:
+<span th:text="${problem.difficulty}">
+</span>
+</p>
+
+<p th:text="${problem.description}">
+</p>
+
+<h3>Sample Input</h3>
+
+<p th:text="${problem.sampleInput}">
+</p>
+
+<h3>Sample Output</h3>
+
+<p th:text="${problem.sampleOutput}">
+</p>
+
+<a href="/problems">
+Back
+</a>
+
+</body>
+</html>

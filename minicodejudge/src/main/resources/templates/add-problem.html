@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h2>Add Problem</h2>
+
+<form th:action="@{/problems}"
+      th:object="${problem}"
+      method="post">
+
+Title:
+<input type="text"
+       th:field="*{title}">
+<br><br>
+
+Difficulty:
+<select th:field="*{difficulty}">
+    <option value="Easy">Easy</option>
+    <option value="Medium">Medium</option>
+    <option value="Hard">Hard</option>
+</select>
+
+<br><br>
+
+Description:
+<textarea th:field="*{description}">
+</textarea>
+
+<br><br>
+
+Sample Input:
+<input type="text"
+       th:field="*{sampleInput}">
+
+<br><br>
+
+Sample Output:
+<input type="text"
+       th:field="*{sampleOutput}">
+
+<br><br>
+
+<button type="submit">
+Save
+</button>
+
+</form>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.minicodejudge.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @GetMapping("/register")
     public String showRegisterPage(Model model) {
@@ -26,7 +29,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute User user) {
-
+    	user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
 
         return "redirect:/users";
@@ -40,5 +43,14 @@ public class UserController {
         model.addAttribute("users", users);
 
         return "users";
+    }
+    @GetMapping("/login")
+    public String login() {
+    	return "login";
+    }
+    
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "dashboard";
     }
 }

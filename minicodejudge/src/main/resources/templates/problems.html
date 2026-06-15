@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<h2>Problems</h2>
+
+<a href="/problems/new">
+Add Problem
+</a>
+
+<table border="1">
+
+<tr>
+    <th>Title</th>
+    <th>Difficulty</th>
+    <th>View</th>
+</tr>
+
+<tr th:each="problem : ${problems}">
+
+    <td th:text="${problem.title}">
+    </td>
+
+    <td th:text="${problem.difficulty}">
+    </td>
+
+    <td>
+        <a th:href="@{/problems/{id}
+             (id=${problem.id})}">
+             View
+        </a>
+    </td>
+
+</tr>
+
+</table>
+
+</body>
+</html>
