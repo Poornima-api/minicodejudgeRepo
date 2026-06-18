@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Run Code</title>
+</head>
+<body>
+
+<h2>Run Java Code</h2>
+
+<form method="post" action="/run">
+
+    <textarea name="code"
+              rows="20"
+              cols="80"></textarea>
+
+    <br><br>
+
+    <button type="submit" name="action" value="run">
+        Run Code
+    </button>
+<button type="submit" name="action" value="save">
+	Save and Run
+	</button>
+</form>
+
+<div th:if="${output != null}">
+    <h3>Output</h3>
+    <pre th:text="${output}"></pre>
+</div>
+<p th:if="${message}"
+   th:text="${message}">
+</p>
+
+</body>
+</html>
